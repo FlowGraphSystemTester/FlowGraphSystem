@@ -10,6 +10,10 @@ Lastly on each edge from DAG the additional information (such as lower bound, cu
 The flow calculation module implements Dinitz's algorithm, feasible flow algorithms, the minimum flow and maximum flow algorithms. 
 The complete system is described in the accompanying [scientific publication]().
 
+# Generating graphs from article
+The input data for the graph in the article is located in the [test/data/graf-testowy-artykul.txt](./test/data/graf-testowy-artykul.txt) file. 
+To generate graphs run `test` target in CMake.
+The output images will be located in `test/data/article`
 ## Mathematical definition of the flow network
 The system processes capacitated flow networks (*capacitated networks*), defined as the following tuple:
 
