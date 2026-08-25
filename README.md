@@ -12,6 +12,7 @@ The complete system is described in the accompanying [scientific publication]().
 
 # Generating graphs from article
 The input data for the graph in the article is located in the [test/data/graf-testowy-artykul.txt](./test/data/graf-testowy-artykul.txt) file. 
+Instructions on how to pass data (input to stdin) to the program are described in [how to pass input section](##-how-to-pass-input) below.
 To generate graphs run `test` target in CMake.
 The output images will be located in `test/data/article`
 ## Mathematical definition of the flow network
@@ -73,7 +74,7 @@ This project build two executables:
 - Test executable that runs the test suite on UJ's graph dataset (a part of) containing over 700 example graphs.
 Sections below describe the assumptions about the input data and what is described in the output of terminal (output data).
 
-## How to pass graphs - Program input
+## How to pass input
 The program reads the graph from standard input (stdin) in this format:
 ```txt
 V E
