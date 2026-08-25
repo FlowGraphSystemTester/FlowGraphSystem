@@ -12,7 +12,7 @@ The complete system is described in the accompanying [scientific publication]().
 
 # Generating graphs from article
 The input data for the graph in the article is located in the [test/data/graf-testowy-artykul.txt](./test/data/graf-testowy-artykul.txt) file. 
-Instructions on how to pass data (input to stdin) to the program are described in [how to pass input section](##-how-to-pass-input) below.
+Instructions on how to pass data (input to stdin) to the program are described in [how to pass input section](#how-to-pass-input) below.
 To generate graphs run `test` target in CMake.
 The output images will be located in `test/data/article`
 ## Mathematical definition of the flow network
