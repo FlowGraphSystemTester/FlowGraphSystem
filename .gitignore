@@ -1,0 +1,15 @@
+cmake-*
+.idea
+.vs
+.vscode
+
+build
+out
+
+test/data/G1toPPpngs/*.png
+test/data/PPtoG2pngs/*.png
+test/data/G2toG3pngs/*.png
+test/data/article/*.png
+test/data/article/paths/*.png
+
+test/data/*.out.json
