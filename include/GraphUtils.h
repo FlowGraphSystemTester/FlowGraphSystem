@@ -1,11 +1,19 @@
 #pragma once
 
 #include "Graph.h"
-#include "graphviz/cgraph.h"
-#include "graphviz/gvc.h"
-#include "graphviz/gvcext.h"
+#include "FlowNetwork.h"
+
+#define DISPLAY_MONIT
 
 inline Graph readGraphFromStdin() {
+#ifdef DISPLAY_MONIT
+    std::cout << "Enter the graph data in the following format (metadata line + incidence line for each node - example shows 3 edges):\n";
+    std::cout << "number_of_vertices number_of_edges\n";
+    std::cout << "v1 v2\n";
+    std::cout << "v2 v3\n";
+    std::cout << "v3 v1\n\n\n";
+#endif
+
     int vertCount;
     int edgeCount;
 
@@ -80,5 +88,19 @@ std::string savePrimePathsToString(const std::vector<std::vector<int>>& paths) {
         graph_file << std::endl;
     }
     return graph_file.str();
+}
+
+inline void printPrimePath(const std::vector<std::vector<int>>& paths) {
+    if (paths.size() > 2) {
+        std::cout << "Prime paths\n";
+        for (int i = 0; i < paths.size()-2; ++i) {
+            std::cout << "(P"+std::to_string(i)+"):\t";
+            for (int j = 0; j < paths[i].size(); ++j) {
+                std::cout << paths[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+    }
 }
 

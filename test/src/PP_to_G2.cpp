@@ -3,7 +3,7 @@
 //
 
 #include "PP_to_G2.h"
-#include "test.h"
+#include "Visualization.h"
 
 #include <iostream>
 

@@ -113,7 +113,6 @@ void ConverterDAG::redirectEdges(const std::vector<int>& cycle, int newVertex) {
             if (auto it = std::ranges::find(graph.adjacency_list[vertex], cycle_vertex); it != graph.adjacency_list[vertex].end())
             {
                 graph.adjacency_list[vertex].erase(it);
-                //graph.adjacency_list[vertex].push_back(newVertex);
                 if (!std::ranges::contains(graph.adjacency_list[vertex],newVertex)) graph.adjacency_list[vertex].push_back(newVertex);
             }
         }
@@ -123,7 +122,6 @@ void ConverterDAG::redirectEdges(const std::vector<int>& cycle, int newVertex) {
         {
             if (neighbor == newVertex || in_cycle[neighbor]) continue;
             outcomingEdges[newVertex].push_back({ cycle_vertex, neighbor });
-            //if (!std::ranges::contains(adjacency_list[newVertex], neighbor)) adjacency_list[newVertex].push_back(neighbour);
             if (!std::ranges::contains(graph.adjacency_list[newVertex],neighbor)) graph.adjacency_list[newVertex].push_back(neighbor);
         }
     }

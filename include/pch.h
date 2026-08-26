@@ -14,6 +14,7 @@
 #include <set>
 #include <stack>
 #include <queue>
+#include <map>
 #include <unordered_map>
 
 // This struct is needed to avoid creating two different stacks for traversing edges

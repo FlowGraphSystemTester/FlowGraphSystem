@@ -1,12 +1,8 @@
 //
 // Created by M.Stanek on 20.08.2026.
 //
-
-#include <iostream>
-#include <map>
+#include "pch.h"
 #include <boost/json.hpp>
-
-#include "Graph1.h"
 
 using namespace boost;
 

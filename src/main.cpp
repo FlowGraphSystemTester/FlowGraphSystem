@@ -3,60 +3,7 @@
 #include "ConverterDAG.h"
 #include "FlowNetwork.h"
 #include "GraphUtils.h"
-
-FlowNetwork convertG3toFlowNetwork(const Graph& g3) {
-    FlowNetwork newFlowNetwork(g3.adjacency_list.size());
-    std::vector<bool> used(g3.adjacency_list.size(), false);
-    std::set<std::pair<int,int>> edges;
-    for (int i = 0; i < g3.adjacency_list.size(); ++i) {
-        if (!g3.adjacency_list[i].empty()) {
-            for (const int to : g3.adjacency_list[i]) {
-                edges.insert({i,to});
-                used[i] = true;
-                used[to] = true;
-            }
-        }
-    }
-
-    int usedVerticesCounter = 0;
-    for (int i = 0; i < used.size(); i++) {
-        if (used[i]) usedVerticesCounter++;
-    }
-
-    for (const auto& [u,v] : edges) {
-        newFlowNetwork.addEdge(u, v, 1, usedVerticesCounter - 1, 0);
-    }
-
-    return newFlowNetwork;
-}
-
-void printFlowGraph(FlowNetwork& network, const Graph& g3, const ConverterDAG& converter){
-    std::cout << "Printing flow graph after min flow" << std::endl;
-    std::cout << "Graph has " << network.getAdjacencyList().size() << " edges and " << g3.verticesCount << " vertices" << std::endl;
-    for (const auto& vertex : network.getAdjacencyList()) {
-        for (const auto&[source, destination, lowerBound, upperBound, currentFlow] : vertex) {
-            std::string from = converter.getLabelFromVertexID(source);
-            std::string to = converter.getLabelFromVertexID(destination);
-
-            std::cout << from << " -> " << to << "   current flow " << currentFlow << " in [" << lowerBound << " - " << upperBound << "]" << std::endl;
-        }
-    }
-    std::cout << "\n";
-}
-
-void printPrimePath(const std::vector<std::vector<int>>& paths) {
-    if (paths.size() > 2) {
-        std::cout << "Prime paths\n";
-        for (int i = 0; i < paths.size()-2; ++i) {
-            std::cout << "(P"+std::to_string(i)+"):\t";
-            for (int j = 0; j < paths[i].size(); ++j) {
-                std::cout << paths[i][j] << " ";
-            }
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;
-    }
-}
+#include "FlowGraphUtils.h"
 
 std::vector<std::vector<int>> generateTestCasesFromStateMachineGraph(const Graph& inputGraph) {
     const Graph& graph = inputGraph;
@@ -102,7 +49,6 @@ int main() {
     //std::sort(paths.begin(), paths.end());
 
     printPrimePath(paths);
-
     std::cout << "Paths (after G1): " << (paths.size() > 2 ? paths.size() - 2 : 0) << std::endl;
     std::cout << "G1 Time: " << time << std::endl;
 
